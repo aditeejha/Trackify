@@ -12,6 +12,10 @@ import VehicleDetailPage from './pages/VehicleDetailPage'
 import DriversPage from './pages/DriversPage'
 import DriverDetailPage from './pages/DriverDetailPage'
 import VehicleAssignmentPage from './pages/VehicleAssignmentPage'
+import FuelManagementPage from './pages/FuelManagementPage'
+import ExpenseTrackingPage from './pages/ExpenseTrackingPage'
+import MaintenanceManagementPage from './pages/MaintenanceManagementPage'
+import ServiceRemindersPage from './pages/ServiceRemindersPage'
 import { useAuthStore } from './store'
 
 function ProtectedRoute({ children }) {
@@ -91,6 +95,38 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <VehicleAssignmentPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/fuel"
+              element={
+                <ProtectedRoute>
+                  <FuelManagementPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/expenses"
+              element={
+                <ProtectedRoute>
+                  <ExpenseTrackingPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/maintenance"
+              element={
+                <ProtectedRoute>
+                  <MaintenanceManagementPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/reminders"
+              element={
+                <ProtectedRoute>
+                  <ServiceRemindersPage />
                 </ProtectedRoute>
               }
             />

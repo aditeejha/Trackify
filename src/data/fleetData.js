@@ -94,6 +94,181 @@ export const mockDrivers = [
   },
 ]
 
+export const mockFuelRecords = [
+  {
+    id: 'F001',
+    vehicleId: 'V001',
+    date: '2024-02-15',
+    amount: 150.50,
+    quantity: 200,
+    mileage: 45000,
+    location: 'Main Fuel Station',
+    cost: 750,
+  },
+  {
+    id: 'F002',
+    vehicleId: 'V001',
+    date: '2024-02-10',
+    amount: 145.00,
+    quantity: 190,
+    mileage: 44500,
+    location: 'Downtown Pump',
+    cost: 695,
+  },
+  {
+    id: 'F003',
+    vehicleId: 'V002',
+    date: '2024-02-14',
+    amount: 85.50,
+    quantity: 110,
+    mileage: 78000,
+    location: 'Main Fuel Station',
+    cost: 420,
+  },
+]
+
+export const mockExpenses = [
+  {
+    id: 'E001',
+    vehicleId: 'V001',
+    date: '2024-02-12',
+    category: 'fuel',
+    description: 'Fuel - Regular Tank',
+    amount: 750,
+    status: 'paid',
+  },
+  {
+    id: 'E002',
+    vehicleId: 'V001',
+    date: '2024-02-08',
+    category: 'maintenance',
+    description: 'Oil Change Service',
+    amount: 2500,
+    status: 'paid',
+  },
+  {
+    id: 'E003',
+    vehicleId: 'V002',
+    date: '2024-02-11',
+    category: 'repair',
+    description: 'Brake Pad Replacement',
+    amount: 1800,
+    status: 'pending',
+  },
+  {
+    id: 'E004',
+    vehicleId: 'V003',
+    date: '2024-02-09',
+    category: 'insurance',
+    description: 'Monthly Insurance Premium',
+    amount: 5000,
+    status: 'paid',
+  },
+  {
+    id: 'E005',
+    vehicleId: 'V001',
+    date: '2024-02-05',
+    category: 'inspection',
+    description: 'Annual Vehicle Inspection',
+    amount: 1200,
+    status: 'paid',
+  },
+]
+
+export const mockMaintenanceRecords = [
+  {
+    id: 'M001',
+    vehicleId: 'V001',
+    date: '2024-01-15',
+    type: 'routine',
+    description: 'Oil Change & Filter Replacement',
+    mileage: 44500,
+    cost: 2500,
+    nextDue: '2024-04-15',
+    status: 'completed',
+  },
+  {
+    id: 'M002',
+    vehicleId: 'V001',
+    date: '2024-01-20',
+    type: 'inspection',
+    description: 'Brake Inspection',
+    mileage: 44800,
+    cost: 1500,
+    nextDue: '2024-07-20',
+    status: 'completed',
+  },
+  {
+    id: 'M003',
+    vehicleId: 'V002',
+    date: '2024-02-01',
+    type: 'repair',
+    description: 'Engine Coolant Flush',
+    mileage: 77800,
+    cost: 3200,
+    nextDue: '2024-08-01',
+    status: 'completed',
+  },
+  {
+    id: 'M004',
+    vehicleId: 'V003',
+    date: '2024-02-10',
+    type: 'major',
+    description: 'Transmission Service',
+    mileage: 125000,
+    cost: 15000,
+    nextDue: '2025-02-10',
+    status: 'in_progress',
+  },
+]
+
+export const mockServiceReminders = [
+  {
+    id: 'SR001',
+    vehicleId: 'V001',
+    type: 'oil_change',
+    description: 'Oil Change Due',
+    dueDate: '2024-04-15',
+    priority: 'high',
+    status: 'active',
+    interval: 3000,
+    lastServiceDate: '2024-01-15',
+  },
+  {
+    id: 'SR002',
+    vehicleId: 'V001',
+    type: 'tire_rotation',
+    description: 'Tire Rotation Due',
+    dueDate: '2024-03-20',
+    priority: 'medium',
+    status: 'active',
+    interval: 5000,
+    lastServiceDate: '2023-11-20',
+  },
+  {
+    id: 'SR003',
+    vehicleId: 'V002',
+    type: 'inspection',
+    description: 'Safety Inspection Due',
+    dueDate: '2024-03-01',
+    priority: 'high',
+    status: 'active',
+    interval: 6000,
+    lastServiceDate: '2023-09-01',
+  },
+  {
+    id: 'SR004',
+    vehicleId: 'V003',
+    type: 'major_service',
+    description: 'Major Service Due',
+    dueDate: '2024-02-20',
+    priority: 'urgent',
+    status: 'overdue',
+    interval: 12000,
+    lastServiceDate: '2023-02-20',
+  },
+]
+
 export const vehicleTypes = [
   { value: 'truck', label: 'Truck' },
   { value: 'van', label: 'Van' },
@@ -110,4 +285,34 @@ export const driverStatuses = [
   { value: 'active', label: 'Active', color: '#10b981' },
   { value: 'inactive', label: 'Inactive', color: '#ef4444' },
   { value: 'on_leave', label: 'On Leave', color: '#f59e0b' },
+]
+
+export const expenseCategories = [
+  { value: 'fuel', label: 'Fuel', color: '#3b82f6' },
+  { value: 'maintenance', label: 'Maintenance', color: '#f59e0b' },
+  { value: 'repair', label: 'Repair', color: '#ef4444' },
+  { value: 'insurance', label: 'Insurance', color: '#8b5cf6' },
+  { value: 'inspection', label: 'Inspection', color: '#10b981' },
+  { value: 'other', label: 'Other', color: '#6b7280' },
+]
+
+export const maintenanceTypes = [
+  { value: 'routine', label: 'Routine', color: '#10b981' },
+  { value: 'inspection', label: 'Inspection', color: '#3b82f6' },
+  { value: 'repair', label: 'Repair', color: '#ef4444' },
+  { value: 'major', label: 'Major Service', color: '#f59e0b' },
+]
+
+export const maintenanceStatuses = [
+  { value: 'completed', label: 'Completed', color: '#10b981' },
+  { value: 'in_progress', label: 'In Progress', color: '#f59e0b' },
+  { value: 'scheduled', label: 'Scheduled', color: '#3b82f6' },
+  { value: 'overdue', label: 'Overdue', color: '#ef4444' },
+]
+
+export const reminderPriorities = [
+  { value: 'urgent', label: 'Urgent', color: '#ef4444' },
+  { value: 'high', label: 'High', color: '#f59e0b' },
+  { value: 'medium', label: 'Medium', color: '#3b82f6' },
+  { value: 'low', label: 'Low', color: '#10b981' },
 ]
