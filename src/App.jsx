@@ -7,6 +7,11 @@ import DashboardPage from './pages/DashboardPage'
 import ShipmentsPage from './pages/ShipmentsPage'
 import ShipmentDetailPage from './pages/ShipmentDetailPage'
 import ReportsPage from './pages/ReportsPage'
+import VehiclesPage from './pages/VehiclesPage'
+import VehicleDetailPage from './pages/VehicleDetailPage'
+import DriversPage from './pages/DriversPage'
+import DriverDetailPage from './pages/DriverDetailPage'
+import VehicleAssignmentPage from './pages/VehicleAssignmentPage'
 import { useAuthStore } from './store'
 
 function ProtectedRoute({ children }) {
@@ -46,6 +51,46 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <ShipmentDetailPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/vehicles"
+              element={
+                <ProtectedRoute>
+                  <VehiclesPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/vehicles/:id"
+              element={
+                <ProtectedRoute>
+                  <VehicleDetailPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/drivers"
+              element={
+                <ProtectedRoute>
+                  <DriversPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/drivers/:id"
+              element={
+                <ProtectedRoute>
+                  <DriverDetailPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/assignments"
+              element={
+                <ProtectedRoute>
+                  <VehicleAssignmentPage />
                 </ProtectedRoute>
               }
             />

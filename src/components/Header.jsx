@@ -26,6 +26,23 @@ export function Header() {
             <Link to="/shipments" className="text-gray-600 hover:text-gray-900">
               Shipments
             </Link>
+            <div className="relative group">
+              <button className="text-gray-600 hover:text-gray-900 flex items-center gap-1">
+                Fleet
+                <span className="text-sm">▼</span>
+              </button>
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                <Link to="/vehicles" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
+                  Vehicles
+                </Link>
+                <Link to="/drivers" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
+                  Drivers
+                </Link>
+                <Link to="/assignments" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
+                  Assignments
+                </Link>
+              </div>
+            </div>
             <Link to="/reports" className="text-gray-600 hover:text-gray-900">
               Reports
             </Link>
@@ -58,6 +75,15 @@ export function Header() {
             </Link>
             <Link to="/shipments" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
               Shipments
+            </Link>
+            <Link to="/vehicles" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
+              Vehicles
+            </Link>
+            <Link to="/drivers" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
+              Drivers
+            </Link>
+            <Link to="/assignments" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
+              Assignments
             </Link>
             <Link to="/reports" className="block px-4 py-2 text-gray-600 hover:bg-gray-50">
               Reports
