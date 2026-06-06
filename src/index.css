@@ -2,25 +2,254 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================================
+   Trackify — "Cult" inspired theme
+   Deep black canvas, electric-blue accents, soft white typography, glass
+   surfaces and smooth motion. The compatibility layer at the bottom remaps
+   the legacy light utility classes used across existing pages so the whole
+   app adopts the dark theme cohesively.
+   ========================================================================= */
+
 :root {
-  --primary: #2563eb;
-  --secondary: #1e40af;
-  --success: #16a34a;
-  --warning: #ea580c;
-  --danger: #dc2626;
-  --neutral: #6b7280;
+  --bg: #05060a;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #f3f6fb;
+  --text-muted: #9aa6b6;
+  --brand: #3b82f6;
+  --brand-strong: #2563eb;
+  --primary: var(--brand);
+  --secondary: var(--brand-strong);
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --neutral: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-gray-50;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(900px circle at 12% -10%, rgba(37, 99, 235, 0.22), transparent 45%),
+    radial-gradient(800px circle at 100% 0%, rgba(56, 189, 248, 0.12), transparent 40%),
+    radial-gradient(1000px circle at 50% 120%, rgba(37, 99, 235, 0.12), transparent 45%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Smooth, consistent interaction feel across the app */
+button,
+a,
+input,
+select,
+textarea,
+[role='button'] {
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+    box-shadow 0.2s ease, transform 0.15s ease, opacity 0.18s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+  background-clip: padding-box;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #fff;
+}
+
+/* Form controls inherit the dark surface by default */
+input,
+select,
+textarea {
+  color: var(--text);
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: var(--border);
+  color-scheme: dark;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #6b7686;
+}
+select option {
+  background: #0d1018;
+  color: var(--text);
+}
+
+/* Default border color for utilities that only set width (e.g. `border-b`) */
+*,
+::before,
+::after {
+  border-color: var(--border);
+}
+
+@layer components {
+  .glass {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-medium text-white;
+    background: linear-gradient(180deg, #3b82f6, #2563eb);
+    box-shadow: 0 8px 24px -10px rgba(59, 130, 246, 0.7);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 10px 30px -8px rgba(59, 130, 246, 0.9);
+    transform: translateY(-1px);
+  }
+}
+
+/* =========================================================================
+   Compatibility remap — legacy light utilities -> dark theme.
+   These are intentionally UNLAYERED so they win over Tailwind's @layer
+   utilities and restyle the existing pages without per-file edits.
+   ========================================================================= */
+
+/* Surfaces */
+.bg-white {
+  background-color: var(--surface) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+.bg-gray-50 {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.bg-gray-100 {
+  background-color: var(--surface-2);
+}
+/* The app root uses min-h-screen bg-gray-50 — let the body gradient show */
+.min-h-screen.bg-gray-50 {
+  background-color: transparent !important;
+}
+
+/* Typography */
+.text-gray-900 { color: #f4f7fb !important; }
+.text-gray-800 { color: #e7ecf3 !important; }
+.text-gray-700 { color: #cdd5e0 !important; }
+.text-gray-600 { color: #9aa6b6 !important; }
+.text-gray-500 { color: #828ea0 !important; }
+.text-gray-400 { color: #6b7686 !important; }
+
+/* Borders */
+.border-gray-100,
+.border-gray-200,
+.border-gray-300 { border-color: var(--border) !important; }
+.divide-gray-100 > :not([hidden]) ~ :not([hidden]),
+.divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: var(--border) !important; }
+
+/* Shadows -> soft depth + hairline */
+.shadow,
+.shadow-md,
+.shadow-lg,
+.shadow-xl {
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 18px 50px -28px rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid var(--border);
+}
+
+/* Hover states */
+.hover\:bg-gray-50:hover { background-color: rgba(255, 255, 255, 0.06) !important; }
+.hover\:bg-gray-100:hover { background-color: rgba(255, 255, 255, 0.09) !important; }
+.hover\:shadow-md:hover,
+.hover\:shadow:hover {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25),
+    0 20px 50px -24px rgba(59, 130, 246, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+/* Pale tints (alert tiles, soft panels) -> translucent accent fills */
+.bg-blue-50 { background-color: rgba(59, 130, 246, 0.12) !important; }
+.bg-green-50 { background-color: rgba(34, 197, 94, 0.12) !important; }
+.bg-red-50 { background-color: rgba(239, 68, 68, 0.12) !important; }
+.bg-amber-50,
+.bg-yellow-50 { background-color: rgba(245, 158, 11, 0.12) !important; }
+
+/* Pastel badge backgrounds -> translucent chips */
+.bg-blue-100 { background-color: rgba(59, 130, 246, 0.18) !important; }
+.bg-green-100 { background-color: rgba(34, 197, 94, 0.18) !important; }
+.bg-red-100 { background-color: rgba(239, 68, 68, 0.18) !important; }
+.bg-amber-100,
+.bg-yellow-100 { background-color: rgba(245, 158, 11, 0.18) !important; }
+
+/* Badge / accent text -> brighter for dark bg */
+.text-blue-600, .text-blue-700, .text-blue-800 { color: #60a5fa !important; }
+.text-green-600, .text-green-700, .text-green-800 { color: #4ade80 !important; }
+.text-red-500, .text-red-600, .text-red-700, .text-red-800 { color: #f87171 !important; }
+.text-amber-600, .text-amber-700, .text-yellow-700 { color: #fbbf24 !important; }
+
+/* Hover text accents */
+.hover\:text-gray-900:hover { color: #ffffff !important; }
+.hover\:text-blue-700:hover { color: #93c5fd !important; }
+
+/* Borders that signal selection (e.g. blue-500) stay vivid */
+.border-blue-500 { border-color: #3b82f6 !important; }
+
+/* Keep primary action buttons vivid (remap of bg-white must not touch them) */
+.bg-blue-600 { background-color: #2563eb !important; backdrop-filter: none; border: none; }
+.hover\:bg-blue-700:hover { background-color: #1d4ed8 !important; }
+
+/* Subtle entrance for routed content */
+main > * {
+  animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Recharts dark theming */
+.recharts-cartesian-grid line,
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: rgba(255, 255, 255, 0.08) !important;
+}
+.recharts-cartesian-axis-tick-value tspan,
+.recharts-legend-item-text,
+.recharts-label,
+.recharts-text {
+  fill: #9aa6b6 !important;
+}
+.recharts-default-tooltip {
+  background: rgba(13, 16, 24, 0.95) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.9) !important;
+  color: var(--text) !important;
+}
+.recharts-tooltip-label,
+.recharts-tooltip-item {
+  color: var(--text) !important;
+}
+.recharts-tooltip-cursor {
+  fill: rgba(255, 255, 255, 0.05) !important;
 }
